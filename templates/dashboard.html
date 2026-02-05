@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Welcome {{ session.name }}</h2>
+    <h3>Total Expense: {{ total }}</h3>
+
+    <a href="/add-expense">Add Expense</a>
+
+    <table border="1">
+    <tr>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th>Note</th>
+    </tr>
+    {% for e in expenses %}
+    <tr>
+        <td>{{ e.expense_date }}</td>
+        <td>{{ e.category }}</td>
+        <td>{{ e.amount }}</td>
+        <td>{{ e.note }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <a href="/logout">Logout</a>
+
+</body>
+</html>
